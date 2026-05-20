@@ -56,6 +56,62 @@ const propiedades = [
     etiqueta: "Buena conexión",
     descripcion: "Excelente alternativa para primera compra o inversión por ubicación y mantenimiento.",
     imagen: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    id: 5,
+    titulo: "Residencia familiar con jardín y espacios abiertos",
+    precio: 6100000,
+    tipo: "casa",
+    categoria: "Premium",
+    ubicacion: "Zona Esmeralda",
+    recamaras: 4,
+    banos: 4,
+    area: 310,
+    etiqueta: "Jardín privado",
+    descripcion: "Una opción amplia para familia, con distribución cómoda y excelente sensación de privacidad.",
+    imagen: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    id: 6,
+    titulo: "Departamento ejecutivo con amenidades completas",
+    precio: 3350000,
+    tipo: "departamento",
+    categoria: "Departamentos",
+    ubicacion: "Interlomas",
+    recamaras: 2,
+    banos: 2,
+    area: 112,
+    etiqueta: "Amenidades",
+    descripcion: "Perfecto para estilo de vida urbano: seguridad, elevador, estacionamiento y áreas comunes.",
+    imagen: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    id: 7,
+    titulo: "Casa con potencial para remodelar y ganar valor",
+    precio: 2980000,
+    tipo: "casa",
+    categoria: "Casas",
+    ubicacion: "Tlalnepantla",
+    recamaras: 3,
+    banos: 2,
+    area: 180,
+    etiqueta: "Oportunidad",
+    descripcion: "Buena base para actualizar, habitar o invertir con una estrategia clara de mejora.",
+    imagen: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    id: 8,
+    titulo: "Penthouse con vista panorámica y acabados premium",
+    precio: 7850000,
+    tipo: "departamento",
+    categoria: "Premium",
+    ubicacion: "Bosque Real",
+    recamaras: 3,
+    banos: 3,
+    area: 260,
+    etiqueta: "Vista premium",
+    descripcion: "Propiedad para comprador que busca exclusividad, altura, seguridad y una experiencia superior.",
+    imagen: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=80"
   }
 ];
 
@@ -198,7 +254,7 @@ function enviarFormularioContacto(event) {
 
 let revealObserver;
 function prepareRevealAnimations() {
-  const elements = document.querySelectorAll(".section, .page-hero, .step-card, .simulator-card, .cta-card, .contact-panel, .filters-panel, .property-card");
+  const elements = document.querySelectorAll(".section, .page-hero, .stats-strip, .stats-grid div, .step-card, .mini-card, .quote-card, .timeline div, .simulator-card, .cta-card, .contact-panel, .filters-panel, .property-card");
   elements.forEach((el, index) => {
     el.classList.add("reveal");
     if (!el.classList.contains("property-card") && !el.classList.contains("step-card")) {
