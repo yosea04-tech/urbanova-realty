@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanOva Realty - Inmobiliaria de Bienes Raíces Urbanos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>🏢 UrbanOva Realty</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="propiedades.html">Propiedades</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Encuentra tu Hogar Perfecto en la Ciudad</h2>
+            <p>Descubre las mejores propiedades urbanas con UrbanOva Realty</p>
+            <a href="propiedades.html" class="btn btn-primary">Ver Propiedades</a>
+        </div>
+    </section>
+
+    <!-- Búsqueda Rápida -->
+    <section class="search-section">
+        <div class="container">
+            <h3>Búsqueda Rápida</h3>
+            <div class="search-form">
+                <input type="text" placeholder="Ubicación..." id="searchLocation">
+                <select id="searchType">
+                    <option value="">Tipo de Propiedad</option>
+                    <option value="apartamento">Apartamento</option>
+                    <option value="casa">Casa</option>
+                    <option value="oficina">Oficina</option>
+                    <option value="local">Local Comercial</option>
+                </select>
+                <input type="number" placeholder="Presupuesto máx..." id="searchBudget">
+                <button class="btn btn-primary" onclick="buscarPropiedades()">Buscar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Propiedades Destacadas -->
+    <section class="featured-properties">
+        <div class="container">
+            <h2>Propiedades Destacadas</h2>
+            <div class="properties-grid" id="featuredProperties">
+                <!-- Las propiedades se cargarán dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section class="services">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Búsqueda Avanzada</h3>
+                    <p>Encuentra propiedades con filtros personalizados según tus necesidades</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Financiamiento</h3>
+                    <p>Asesoría en opciones de crédito y financiamiento inmobiliario</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>Trámites Legales</h3>
+                    <p>Apoyo completo en documentación y procesos legales</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏡</div>
+                    <h3>Asesoría Personalizada</h3>
+                    <p>Agentes expertos listos para ayudarte en tu búsqueda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Suscríbete a Nuestro Boletín</h2>
+            <p>Recibe las mejores ofertas directamente en tu email</p>
+            <form class="newsletter-form" onsubmit="suscribirse(event)">
+                <input type="email" placeholder="Tu email..." required>
+                <button type="submit" class="btn btn-primary">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>UrbanOva Realty</h4>
+                    <p>Tu aliado en el mercado inmobiliario urbano</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="propiedades.html">Propiedades</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>Email: info@urbanovarealty.com</p>
+                    <p>Teléfono: +1 (555) 123-4567</p>
+                    <p>Dirección: Calle Principal 123, Ciudad</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 UrbanOva Realty. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
