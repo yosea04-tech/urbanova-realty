@@ -4,9 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Catálogo de propiedades Urbanova Realty Solutions: casas y departamentos para visitar con asesoría inmobiliaria y de crédito." />
+  <meta name="theme-color" content="#0b1f36" />
   <title>Propiedades | Urbanova Realty Solutions</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="enhancements.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="stylesheet" href="style.css?v=20260520-urbanova3" />
+  <link rel="stylesheet" href="enhancements.css?v=20260520-urbanova3" />
 </head>
 <body>
   <header class="site-header">
@@ -29,23 +32,11 @@
         <p class="eyebrow">Catálogo privado con asesoría</p>
         <h1>Propiedades destacadas para comparar y visitar.</h1>
         <p class="hero-text">Mostramos algunas opciones clave. El catálogo completo se comparte por WhatsApp según tu zona, presupuesto y forma de compra.</p>
-
         <div class="filters-panel">
           <div class="filters-grid">
-            <label>Zona
-              <input id="filterLocation" type="text" placeholder="Ej. Satélite, Alamedas">
-            </label>
-            <label>Tipo
-              <select id="filterType">
-                <option value="">Todas</option>
-                <option value="casa">Casas</option>
-                <option value="departamento">Departamentos</option>
-                <option value="Premium">Premium</option>
-              </select>
-            </label>
-            <label>Presupuesto máximo
-              <input id="filterBudget" type="number" placeholder="Ej. 4500000">
-            </label>
+            <label>Zona<input id="filterLocation" type="text" placeholder="Ej. Satélite, Alamedas"></label>
+            <label>Tipo<select id="filterType"><option value="">Todas</option><option value="casa">Casas</option><option value="departamento">Departamentos</option><option value="Premium">Premium</option></select></label>
+            <label>Presupuesto máximo<input id="filterBudget" type="number" placeholder="Ej. 4500000"></label>
             <button class="btn btn-primary" type="button" onclick="aplicarFiltros()">Filtrar</button>
           </div>
           <p class="alert">Mostrando <strong id="resultCount">0</strong> propiedades.</p>
@@ -69,18 +60,12 @@
 
   <footer class="footer">
     <div class="container footer-grid">
-      <div>
-        <h3>Urbanova Realty Solutions</h3>
-        <p>Propiedades reales, visitas coordinadas y crédito con claridad.</p>
-      </div>
-      <div>
-        <h4>Contacto</h4>
-        <p><a href="https://wa.me/525646514956" target="_blank" rel="noopener">WhatsApp: 56 4651 4956</a></p>
-      </div>
+      <div><h3>Urbanova Realty Solutions</h3><p>Propiedades reales, visitas coordinadas y crédito con claridad.</p></div>
+      <div><h4>Contacto</h4><p><a href="https://wa.me/525646514956" target="_blank" rel="noopener">WhatsApp: 56 4651 4956</a></p></div>
     </div>
     <p class="footer-bottom">© 2026 Urbanova Realty Solutions.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20260520-urbanova3"></script>
 </body>
 </html>
