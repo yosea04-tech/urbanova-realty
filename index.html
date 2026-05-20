@@ -1,134 +1,150 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UrbanOva Realty - Inmobiliaria de Bienes Raíces Urbanos</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Urbanova Realty Solutions: asesoría inmobiliaria, propiedades verificadas y soluciones de crédito para comprar casa o departamento con claridad." />
+  <title>Urbanova Realty Solutions | Créditos e Inmuebles</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <h1>🏢 UrbanOva Realty</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="propiedades.html">Propiedades</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </div>
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Navegación principal">
+      <a class="brand" href="index.html" aria-label="Urbanova Realty Solutions">
+        <span class="brand-mark">UR</span>
+        <span>Urbanova</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a class="active" href="index.html">Inicio</a></li>
+        <li><a href="propiedades.html">Propiedades</a></li>
+        <li><a href="#simulador">Simulador</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>Encuentra tu Hogar Perfecto en la Ciudad</h2>
-            <p>Descubre las mejores propiedades urbanas con UrbanOva Realty</p>
-            <a href="propiedades.html" class="btn btn-primary">Ver Propiedades</a>
+  <main>
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Soluciones de crédito + asesoría inmobiliaria</p>
+          <h1>Compra una propiedad con una ruta clara, segura y bien acompañada.</h1>
+          <p class="hero-text">Te ayudamos a comparar opciones reales, revisar tu forma de pago y coordinar visitas sin presión. Trabajamos con compra de contado, créditos bancarios, Infonavit, Fovissste y otras alternativas.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/525646514956?text=Hola%20Urbanova%2C%20quiero%20asesor%C3%ADa%20para%20comprar%20una%20propiedad" target="_blank" rel="noopener">Hablar con un asesor</a>
+            <a class="btn btn-ghost" href="propiedades.html">Ver propiedades</a>
+          </div>
+          <div class="trust-row" aria-label="Indicadores de confianza">
+            <span>Propiedades verificadas</span>
+            <span>Crédito con claridad</span>
+            <span>Visitas coordinadas</span>
+          </div>
         </div>
+        <div class="hero-card">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Interior moderno de una propiedad residencial" />
+          <div class="floating-card">
+            <strong>Atención 1:1</strong>
+            <span>Te guiamos de principio a fin.</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Búsqueda Rápida -->
-    <section class="search-section">
-        <div class="container">
-            <h3>Búsqueda Rápida</h3>
-            <div class="search-form">
-                <input type="text" placeholder="Ubicación..." id="searchLocation">
-                <select id="searchType">
-                    <option value="">Tipo de Propiedad</option>
-                    <option value="apartamento">Apartamento</option>
-                    <option value="casa">Casa</option>
-                    <option value="oficina">Oficina</option>
-                    <option value="local">Local Comercial</option>
-                </select>
-                <input type="number" placeholder="Presupuesto máx..." id="searchBudget">
-                <button class="btn btn-primary" onclick="buscarPropiedades()">Buscar</button>
-            </div>
+    <section class="section route-section">
+      <div class="container">
+        <p class="eyebrow">Empieza con claridad</p>
+        <h2>Una ruta simple para pasar de curiosidad a visita.</h2>
+        <div class="steps-grid">
+          <article class="step-card">
+            <span>01</span>
+            <h3>Simula tu compra</h3>
+            <p>Calcula un pago estimado y define qué rango de propiedad hace sentido para ti.</p>
+          </article>
+          <article class="step-card">
+            <span>02</span>
+            <h3>Compara opciones reales</h3>
+            <p>Revisa ubicación, precio, recámaras, amenidades y tipo de oportunidad.</p>
+          </article>
+          <article class="step-card">
+            <span>03</span>
+            <h3>Agenda una visita</h3>
+            <p>Te acompañamos con dudas, documentos, crédito y siguientes pasos de compra.</p>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Propiedades Destacadas -->
-    <section class="featured-properties">
-        <div class="container">
-            <h2>Propiedades Destacadas</h2>
-            <div class="properties-grid" id="featuredProperties">
-                <!-- Las propiedades se cargarán dinámicamente -->
-            </div>
+    <section class="section featured-section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Propiedades destacadas</p>
+            <h2>Opciones listas para conocer, comparar y visitar.</h2>
+          </div>
+          <a class="text-link" href="propiedades.html">Ver catálogo completo →</a>
         </div>
+        <div class="properties-grid" id="featuredProperties"></div>
+      </div>
     </section>
 
-    <!-- Servicios -->
-    <section class="services">
-        <div class="container">
-            <h2>Nuestros Servicios</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🔍</div>
-                    <h3>Búsqueda Avanzada</h3>
-                    <p>Encuentra propiedades con filtros personalizados según tus necesidades</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">💰</div>
-                    <h3>Financiamiento</h3>
-                    <p>Asesoría en opciones de crédito y financiamiento inmobiliario</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📋</div>
-                    <h3>Trámites Legales</h3>
-                    <p>Apoyo completo en documentación y procesos legales</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🏡</div>
-                    <h3>Asesoría Personalizada</h3>
-                    <p>Agentes expertos listos para ayudarte en tu búsqueda</p>
-                </div>
-            </div>
+    <section class="section simulator-section" id="simulador">
+      <div class="container simulator-grid">
+        <div>
+          <p class="eyebrow">Calcula antes de decidir</p>
+          <h2>Simulador rápido de pago mensual.</h2>
+          <p>Usa esta referencia inicial para ordenar presupuesto. Después revisamos contigo una corrida formal según tu perfil y forma de pago.</p>
         </div>
+        <div class="simulator-card">
+          <label>Precio de propiedad
+            <input id="propertyPrice" type="number" value="4200000" min="500000" step="50000" oninput="calcularPago()">
+          </label>
+          <label>Enganche (%)
+            <input id="downPayment" type="number" value="15" min="0" max="90" step="1" oninput="calcularPago()">
+          </label>
+          <label>Plazo
+            <select id="loanYears" onchange="calcularPago()">
+              <option value="10">10 años</option>
+              <option value="15" selected>15 años</option>
+              <option value="20">20 años</option>
+            </select>
+          </label>
+          <div class="payment-box">
+            <span>Pago estimado</span>
+            <strong id="estimatedPayment">$0</strong>
+            <small>Referencia aproximada con tasa anual de 10.9%. No sustituye una corrida bancaria.</small>
+          </div>
+          <a class="btn btn-primary full" href="https://wa.me/525646514956?text=Hola%20Urbanova%2C%20quiero%20revisar%20mi%20cr%C3%A9dito%20para%20comprar%20una%20propiedad" target="_blank" rel="noopener">Revisar mi crédito</a>
+        </div>
+      </div>
     </section>
 
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Suscríbete a Nuestro Boletín</h2>
-            <p>Recibe las mejores ofertas directamente en tu email</p>
-            <form class="newsletter-form" onsubmit="suscribirse(event)">
-                <input type="email" placeholder="Tu email..." required>
-                <button type="submit" class="btn btn-primary">Suscribirse</button>
-            </form>
-        </div>
+    <section class="section cta-section">
+      <div class="container cta-card">
+        <p class="eyebrow">Siguiente paso</p>
+        <h2>Convirtamos una propiedad interesante en una visita bien planeada.</h2>
+        <p>Cuéntanos zona, presupuesto y tipo de compra. Te ayudamos a ordenar opciones y avanzar con seguridad.</p>
+        <a class="btn btn-light" href="contacto.html">Contactar ahora</a>
+      </div>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>UrbanOva Realty</h4>
-                    <p>Tu aliado en el mercado inmobiliario urbano</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Enlaces Rápidos</h4>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="propiedades.html">Propiedades</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <p>Email: info@urbanovarealty.com</p>
-                    <p>Teléfono: +1 (555) 123-4567</p>
-                    <p>Dirección: Calle Principal 123, Ciudad</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 UrbanOva Realty. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Urbanova Realty Solutions</h3>
+        <p>Asesoría inmobiliaria y soluciones de crédito para comprar con más claridad.</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <p><a href="mailto:info@urbanovarealty.io">info@urbanovarealty.io</a></p>
+        <p><a href="https://wa.me/525646514956" target="_blank" rel="noopener">WhatsApp: 56 4651 4956</a></p>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2026 Urbanova Realty Solutions. Todos los derechos reservados.</p>
+  </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
