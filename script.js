@@ -70,9 +70,10 @@ function propertyMessage(propiedad) {
   return encodeURIComponent(`Hola Urbanova, quiero información y visita para: ${propiedad.titulo} en ${propiedad.ubicacion}.`);
 }
 
-function crearTarjetaPropiedad(propiedad) {
+function crearTarjetaPropiedad(propiedad, index = 0) {
+  const delayClass = `reveal-delay-${Math.min((index % 3) + 1, 3)}`;
   return `
-    <article class="property-card">
+    <article class="property-card reveal ${delayClass}">
       <div class="property-media">
         <img src="${propiedad.imagen}" alt="${propiedad.titulo}" loading="lazy">
         <span class="badge">${propiedad.etiqueta}</span>
@@ -100,19 +101,22 @@ function renderPropiedades(lista = propiedades, targetId = "propertiesContainer"
   const target = document.getElementById(targetId);
   if (!target) return;
 
-  target.innerHTML = lista.map(crearTarjetaPropiedad).join("");
+  target.innerHTML = lista.map((p, index) => crearTarjetaPropiedad(p, index)).join("");
 
   const resultCount = document.getElementById("resultCount");
   if (resultCount) resultCount.textContent = lista.length;
 
   const noResults = document.getElementById("noResults");
   if (noResults) noResults.style.display = lista.length ? "none" : "block";
+
+  prepareRevealAnimations();
 }
 
 function renderDestacadas() {
   const target = document.getElementById("featuredProperties");
   if (!target) return;
-  target.innerHTML = propiedades.slice(0, 3).map(crearTarjetaPropiedad).join("");
+  target.innerHTML = propiedades.slice(0, 3).map((p, index) => crearTarjetaPropiedad(p, index)).join("");
+  prepareRevealAnimations();
 }
 
 function aplicarFiltros() {
@@ -144,6 +148,24 @@ function verDetalles(id) {
   alert(`${p.titulo}\n\nUbicación: ${p.ubicacion}\nPrecio: ${formatCurrency(p.precio)}\nÁrea: ${p.area} m²\nRecámaras: ${p.recamaras}\nBaños: ${p.banos}\n\n${p.descripcion}`);
 }
 
+function animateMoney(element, finalValue) {
+  if (!element || !Number.isFinite(finalValue)) return;
+  const startValue = Number(element.dataset.value || 0);
+  const duration = 520;
+  const start = performance.now();
+
+  function tick(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = startValue + (finalValue - startValue) * eased;
+    element.textContent = formatCurrency(current);
+    if (progress < 1) requestAnimationFrame(tick);
+    else element.dataset.value = String(finalValue);
+  }
+
+  requestAnimationFrame(tick);
+}
+
 function calcularPago() {
   const price = Number(document.getElementById("propertyPrice")?.value) || 0;
   const down = Number(document.getElementById("downPayment")?.value) || 0;
@@ -155,7 +177,7 @@ function calcularPago() {
   const payment = principal * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
 
   const target = document.getElementById("estimatedPayment");
-  if (target) target.textContent = Number.isFinite(payment) ? formatCurrency(payment) : "$0";
+  animateMoney(target, payment);
 }
 
 function enviarFormularioContacto(event) {
@@ -171,11 +193,48 @@ function enviarFormularioContacto(event) {
   form.reset();
 
   const alertBox = document.getElementById("formAlert");
-  if (alertBox) alertBox.textContent = "Se abrió WhatsApp con tu mensaje listo para enviar.";
+  if (alertBox) textBounce(alertBox, "Se abrió WhatsApp con tu mensaje listo para enviar.");
+}
+
+let revealObserver;
+function prepareRevealAnimations() {
+  const elements = document.querySelectorAll(".section, .page-hero, .step-card, .simulator-card, .cta-card, .contact-panel, .filters-panel, .property-card");
+  elements.forEach((el, index) => {
+    el.classList.add("reveal");
+    if (!el.classList.contains("property-card") && !el.classList.contains("step-card")) {
+      el.classList.add(`reveal-delay-${Math.min((index % 3) + 1, 3)}`);
+    }
+  });
+
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: "0px 0px -70px 0px" });
+  }
+
+  document.querySelectorAll(".reveal:not(.in-view)").forEach((el) => revealObserver.observe(el));
+}
+
+function textBounce(element, text) {
+  element.textContent = text;
+  element.animate(
+    [
+      { transform: "translateY(8px)", opacity: 0 },
+      { transform: "translateY(-2px)", opacity: 1 },
+      { transform: "translateY(0)", opacity: 1 }
+    ],
+    { duration: 420, easing: "cubic-bezier(.2,.8,.2,1)" }
+  );
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   renderDestacadas();
   renderPropiedades();
   calcularPago();
+  prepareRevealAnimations();
 });
