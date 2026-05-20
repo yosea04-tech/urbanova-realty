@@ -1,367 +1,181 @@
-// Base de datos de propiedades
+const WHATSAPP_NUMBER = "525646514956";
+
 const propiedades = [
-    {
-        id: 1,
-        titulo: "Apartamento Moderno en Centro",
-        precio: 350000,
-        tipo: "apartamento",
-        ubicacion: "Centro",
-        habitaciones: 3,
-        baños: 2,
-        area: 120,
-        descripcion: "Hermoso apartamento con vista al parque, cocina integrada y balcón privado.",
-        agente: "Carlos Mendez",
-        telefono: "+1-5551234567",
-        imagen: "🏢"
-    },
-    {
-        id: 2,
-        titulo: "Casa Familiar en Zona Residencial",
-        precio: 550000,
-        tipo: "casa",
-        ubicacion: "Zona Residencial",
-        habitaciones: 4,
-        baños: 3,
-        area: 250,
-        descripcion: "Casa de dos plantas con jardín, garaje y piscina. Perfecta para familias.",
-        agente: "Ana García",
-        telefono: "+1-5552345678",
-        imagen: "🏠"
-    },
-    {
-        id: 3,
-        titulo: "Oficina Premium Empresarial",
-        precio: 450000,
-        tipo: "oficina",
-        ubicacion: "Zona Empresarial",
-        habitaciones: 5,
-        baños: 2,
-        area: 200,
-        descripcion: "Oficina moderna con servicios completos, estacionamiento y área de espera.",
-        agente: "Luis Rivera",
-        telefono: "+1-5553456789",
-        imagen: "🏢"
-    },
-    {
-        id: 4,
-        titulo: "Local Comercial en Avenida Principal",
-        precio: 280000,
-        tipo: "local",
-        ubicacion: "Avenida Principal",
-        habitaciones: 2,
-        baños: 1,
-        area: 85,
-        descripcion: "Local comercial con alta afluencia, vitrina al frente y depósito posterior.",
-        agente: "María López",
-        telefono: "+1-5554567890",
-        imagen: "🏪"
-    },
-    {
-        id: 5,
-        titulo: "Penthouse Lujoso con Terraza",
-        precio: 850000,
-        tipo: "apartamento",
-        ubicacion: "Centro",
-        habitaciones: 3,
-        baños: 3,
-        area: 300,
-        descripcion: "Penthouse de lujo con terraza panorámica, piscina privada y gimnasio.",
-        agente: "Carlos Mendez",
-        telefono: "+1-5551234567",
-        imagen: "🏰"
-    },
-    {
-        id: 6,
-        titulo: "Casa de Campo con Piscina",
-        precio: 650000,
-        tipo: "casa",
-        ubicacion: "Zona Rural",
-        habitaciones: 5,
-        baños: 4,
-        area: 400,
-        descripcion: "Casa campestre con 2 hectáreas, piscina olímpica y cancha de tenis.",
-        agente: "Ana García",
-        telefono: "+1-5552345678",
-        imagen: "🏡"
-    }
+  {
+    id: 1,
+    titulo: "Departamento moderno con terraza y luz natural",
+    precio: 4200000,
+    tipo: "departamento",
+    categoria: "Departamentos",
+    ubicacion: "Lomas de Tecamachalco",
+    recamaras: 2,
+    banos: 2,
+    area: 210,
+    etiqueta: "Terraza privada",
+    descripcion: "Ideal para quien busca amplitud, ubicación residencial y una propiedad lista para visitar.",
+    imagen: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    id: 2,
+    titulo: "Casa funcional para vivir cómodo todos los días",
+    precio: 3650000,
+    tipo: "casa",
+    categoria: "Casas",
+    ubicacion: "Fuentes de Satélite",
+    recamaras: 3,
+    banos: 2,
+    area: 158,
+    etiqueta: "Calle tranquila",
+    descripcion: "Una opción práctica por distribución, conexión con zonas clave y espacios familiares.",
+    imagen: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    id: 3,
+    titulo: "Casa de una planta, abierta y lista para habitar",
+    precio: 5190000,
+    tipo: "casa",
+    categoria: "Premium",
+    ubicacion: "Las Alamedas",
+    recamaras: 3,
+    banos: 4,
+    area: 240,
+    etiqueta: "Remodelada",
+    descripcion: "Frente a parque, en esquina y con una sensación más amplia desde la primera visita.",
+    imagen: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
+  },
+  {
+    id: 4,
+    titulo: "Departamento práctico cerca de vías principales",
+    precio: 2850000,
+    tipo: "departamento",
+    categoria: "Departamentos",
+    ubicacion: "Naucalpan Centro",
+    recamaras: 2,
+    banos: 2,
+    area: 96,
+    etiqueta: "Buena conexión",
+    descripcion: "Excelente alternativa para primera compra o inversión por ubicación y mantenimiento.",
+    imagen: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=900&q=80"
+  }
 ];
 
-// Función para crear tarjeta de propiedad
+const formatCurrency = (value) =>
+  value.toLocaleString("es-MX", { style: "currency", currency: "MXN", maximumFractionDigits: 0 });
+
+function toggleMenu() {
+  document.getElementById("navLinks")?.classList.toggle("open");
+}
+
+function propertyMessage(propiedad) {
+  return encodeURIComponent(`Hola Urbanova, quiero información y visita para: ${propiedad.titulo} en ${propiedad.ubicacion}.`);
+}
+
 function crearTarjetaPropiedad(propiedad) {
-    const isFavorite = isFavorite(propiedad.id);
-    
-    return `
-        <div class="property-card">
-            <div class="property-image">
-                <span>${propiedad.imagen}</span>
-                <button class="favorite-btn ${isFavorite ? 'active' : ''}" onclick="toggleFavorito(${propiedad.id})">
-                    ${isFavorite ? '❤️' : '🤍'}
-                </button>
-                <div class="property-type">${propiedad.tipo.charAt(0).toUpperCase() + propiedad.tipo.slice(1)}</div>
-            </div>
-            <div class="property-info">
-                <div class="property-price">$${propiedad.precio.toLocaleString()}</div>
-                <h3 style="margin-bottom: 10px; font-size: 1.1rem;">${propiedad.titulo}</h3>
-                <div class="property-details">
-                    <span>🛏️ ${propiedad.habitaciones} hab.</span>
-                    <span>🚿 ${propiedad.baños} baños</span>
-                    <span>📐 ${propiedad.area} m²</span>
-                </div>
-                <div class="property-address">📍 ${propiedad.ubicacion}</div>
-                <div class="property-description">${propiedad.descripcion}</div>
-                <div style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">
-                    Agente: <strong>${propiedad.agente}</strong>
-                </div>
-                <div class="property-footer">
-                    <button class="btn btn-details" onclick="verDetalles(${propiedad.id})">Ver Detalles</button>
-                    <button class="btn btn-contact" onclick="contactarAgente(${propiedad.id})">Contactar</button>
-                </div>
-            </div>
+  return `
+    <article class="property-card">
+      <div class="property-media">
+        <img src="${propiedad.imagen}" alt="${propiedad.titulo}" loading="lazy">
+        <span class="badge">${propiedad.etiqueta}</span>
+      </div>
+      <div class="property-info">
+        <span class="property-location">${propiedad.ubicacion}</span>
+        <h3>${propiedad.titulo}</h3>
+        <p>${propiedad.descripcion}</p>
+        <div class="property-meta">
+          <span>${propiedad.area} m²</span>
+          <span>${propiedad.recamaras} rec.</span>
+          <span>${propiedad.banos} baños</span>
         </div>
-    `;
+        <div class="property-price">${formatCurrency(propiedad.precio)}</div>
+        <div class="card-actions">
+          <a class="btn btn-primary" href="https://wa.me/${WHATSAPP_NUMBER}?text=${propertyMessage(propiedad)}" target="_blank" rel="noopener">Agendar visita</a>
+          <button class="btn btn-outline" type="button" onclick="verDetalles(${propiedad.id})">Detalles</button>
+        </div>
+      </div>
+    </article>
+  `;
 }
 
-// Mostrar todas las propiedades
-function mostrarTodasLasPropiedades() {
-    const container = document.getElementById('propertiesContainer');
-    const resultsInfo = document.getElementById('resultsInfo');
-    const noResults = document.getElementById('noResults');
-    
-    container.innerHTML = propiedades.map(p => crearTarjetaPropiedad(p)).join('');
-    
-    resultsInfo.style.display = 'block';
-    document.getElementById('resultCount').textContent = propiedades.length;
-    noResults.style.display = 'none';
-    
-    // Mostrar también en featured de index
-    if (document.getElementById('featuredProperties')) {
-        document.getElementById('featuredProperties').innerHTML = propiedades
-            .slice(0, 3)
-            .map(p => crearTarjetaPropiedad(p))
-            .join('');
-    }
+function renderPropiedades(lista = propiedades, targetId = "propertiesContainer") {
+  const target = document.getElementById(targetId);
+  if (!target) return;
+
+  target.innerHTML = lista.map(crearTarjetaPropiedad).join("");
+
+  const resultCount = document.getElementById("resultCount");
+  if (resultCount) resultCount.textContent = lista.length;
+
+  const noResults = document.getElementById("noResults");
+  if (noResults) noResults.style.display = lista.length ? "none" : "block";
 }
 
-// Función para aplicar filtros
+function renderDestacadas() {
+  const target = document.getElementById("featuredProperties");
+  if (!target) return;
+  target.innerHTML = propiedades.slice(0, 3).map(crearTarjetaPropiedad).join("");
+}
+
 function aplicarFiltros() {
-    const location = document.getElementById('filterLocation')?.value.toLowerCase() || '';
-    const type = document.getElementById('filterType')?.value || '';
-    const minPrice = parseInt(document.getElementById('filterMinPrice')?.value) || 0;
-    const maxPrice = parseInt(document.getElementById('filterMaxPrice')?.value) || Infinity;
-    const bedrooms = document.getElementById('filterBedrooms')?.value || '';
+  const tipo = document.getElementById("filterType")?.value || "";
+  const presupuesto = Number(document.getElementById("filterBudget")?.value) || Infinity;
+  const zona = (document.getElementById("filterLocation")?.value || "").toLowerCase();
 
-    const filtered = propiedades.filter(p => {
-        const matchLocation = location === '' || p.ubicacion.toLowerCase().includes(location);
-        const matchType = type === '' || p.tipo === type;
-        const matchPrice = p.precio >= minPrice && p.precio <= maxPrice;
-        const matchBedrooms = bedrooms === '' || p.habitaciones == bedrooms;
-        
-        return matchLocation && matchType && matchPrice && matchBedrooms;
-    });
+  const filtradas = propiedades.filter((p) => {
+    const matchTipo = !tipo || p.tipo === tipo || p.categoria === tipo;
+    const matchPresupuesto = p.precio <= presupuesto;
+    const matchZona = !zona || p.ubicacion.toLowerCase().includes(zona);
+    return matchTipo && matchPresupuesto && matchZona;
+  });
 
-    mostrarResultados(filtered);
+  renderPropiedades(filtradas);
 }
 
-// Mostrar resultados filtrados
-function mostrarResultados(results) {
-    const container = document.getElementById('propertiesContainer');
-    const resultsInfo = document.getElementById('resultsInfo');
-    const noResults = document.getElementById('noResults');
-
-    if (results.length === 0) {
-        container.innerHTML = '';
-        resultsInfo.style.display = 'none';
-        noResults.style.display = 'block';
-    } else {
-        container.innerHTML = results.map(p => crearTarjetaPropiedad(p)).join('');
-        resultsInfo.style.display = 'block';
-        document.getElementById('resultCount').textContent = results.length;
-        noResults.style.display = 'none';
-    }
-}
-
-// Buscar propiedades desde la página principal
-function buscarPropiedades() {
-    const location = document.getElementById('searchLocation')?.value.toLowerCase() || '';
-    const type = document.getElementById('searchType')?.value || '';
-    const budget = parseInt(document.getElementById('searchBudget')?.value) || Infinity;
-
-    const results = propiedades.filter(p => {
-        const matchLocation = location === '' || p.ubicacion.toLowerCase().includes(location);
-        const matchType = type === '' || p.tipo === type;
-        const matchBudget = p.precio <= budget;
-        
-        return matchLocation && matchType && matchBudget;
-    });
-
-    // Mostrar en propiedades.html si estamos ahí
-    if (window.location.pathname.includes('propiedades.html') || window.location.href.includes('propiedades.html')) {
-        mostrarResultados(results);
-    } else {
-        // Ir a propiedades.html con los resultados
-        window.location.href = 'propiedades.html';
-    }
-}
-
-// Limpiar filtros
 function limpiarFiltros() {
-    if (document.getElementById('filterLocation')) {
-        document.getElementById('filterLocation').value = '';
-        document.getElementById('filterType').value = '';
-        document.getElementById('filterMinPrice').value = '';
-        document.getElementById('filterMaxPrice').value = '';
-        document.getElementById('filterBedrooms').value = '';
-    }
-    
-    if (document.getElementById('searchLocation')) {
-        document.getElementById('searchLocation').value = '';
-        document.getElementById('searchType').value = '';
-        document.getElementById('searchBudget').value = '';
-    }
-    
-    mostrarTodasLasPropiedades();
+  ["filterType", "filterBudget", "filterLocation"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.value = "";
+  });
+  renderPropiedades(propiedades);
 }
 
-// Gestión de favoritos (usando localStorage)
-function toggleFavorito(id) {
-    let favoritos = JSON.parse(localStorage.getItem('urbanova_favoritos')) || [];
-    
-    if (favoritos.includes(id)) {
-        favoritos = favoritos.filter(fav => fav !== id);
-    } else {
-        favoritos.push(id);
-    }
-    
-    localStorage.setItem('urbanova_favoritos', JSON.stringify(favoritos));
-    
-    // Actualizar UI
-    actualizarBotonesFavoritos();
-}
-
-function isFavorite(id) {
-    const favoritos = JSON.parse(localStorage.getItem('urbanova_favoritos')) || [];
-    return favoritos.includes(id);
-}
-
-function actualizarBotonesFavoritos() {
-    const botones = document.querySelectorAll('.favorite-btn');
-    botones.forEach(btn => {
-        const card = btn.closest('.property-card');
-        if (card) {
-            const id = parseInt(btn.getAttribute('onclick').match(/\d+/)[0]);
-            const isFav = isFavorite(id);
-            btn.textContent = isFav ? '❤️' : '🤍';
-            btn.classList.toggle('active', isFav);
-        }
-    });
-}
-
-// Ver detalles de propiedad
 function verDetalles(id) {
-    const propiedad = propiedades.find(p => p.id === id);
-    if (propiedad) {
-        alert(`
-${propiedad.titulo}
-
-Precio: $${propiedad.precio.toLocaleString()}
-Ubicación: ${propiedad.ubicacion}
-Habitaciones: ${propiedad.habitaciones}
-Baños: ${propiedad.baños}
-Área: ${propiedad.area} m²
-
-${propiedad.descripcion}
-
-Agente: ${propiedad.agente}
-Teléfono: ${propiedad.telefono}
-        `);
-    }
+  const p = propiedades.find((item) => item.id === id);
+  if (!p) return;
+  alert(`${p.titulo}\n\nUbicación: ${p.ubicacion}\nPrecio: ${formatCurrency(p.precio)}\nÁrea: ${p.area} m²\nRecámaras: ${p.recamaras}\nBaños: ${p.banos}\n\n${p.descripcion}`);
 }
 
-// Contactar agente
-function contactarAgente(id) {
-    const propiedad = propiedades.find(p => p.id === id);
-    if (propiedad) {
-        const mensaje = `Estoy interesado en la propiedad: ${propiedad.titulo} (ID: ${propiedad.id})`;
-        // Llenar el formulario de contacto si existe
-        const form = document.getElementById('contactForm');
-        if (form) {
-            document.getElementById('contactProperty').value = id;
-            form.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            // Si no hay formulario, ir a contacto.html
-            window.location.href = 'contacto.html?property=' + id;
-        }
-    }
+function calcularPago() {
+  const price = Number(document.getElementById("propertyPrice")?.value) || 0;
+  const down = Number(document.getElementById("downPayment")?.value) || 0;
+  const years = Number(document.getElementById("loanYears")?.value) || 15;
+  const annualRate = 0.109;
+  const monthlyRate = annualRate / 12;
+  const months = years * 12;
+  const principal = price * (1 - down / 100);
+  const payment = principal * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+
+  const target = document.getElementById("estimatedPayment");
+  if (target) target.textContent = Number.isFinite(payment) ? formatCurrency(payment) : "$0";
 }
 
-// Enviar formulario de contacto
 function enviarFormularioContacto(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const name = form.querySelector('#contactName')?.value || '';
-    const email = form.querySelector('#contactEmail')?.value || '';
-    const phone = form.querySelector('#contactPhone')?.value || '';
-    const propertyId = form.querySelector('#contactProperty')?.value || 'N/A';
-    const message = form.querySelector('#contactMessage')?.value || '';
-    
-    // Validar
-    if (!name || !email || !phone || !message) {
-        alert('Por favor completa todos los campos requeridos');
-        return;
-    }
-    
-    // Mostrar confirmación
-    alert(`¡Gracias ${name}! Tu mensaje ha sido enviado exitosamente.
+  event.preventDefault();
+  const form = event.target;
+  const nombre = form.nombre.value.trim();
+  const telefono = form.telefono.value.trim();
+  const presupuesto = form.presupuesto.value.trim();
+  const mensaje = form.mensaje.value.trim();
 
-Nos contactaremos a ${email} o ${phone} en breve.
+  const texto = encodeURIComponent(`Hola Urbanova, soy ${nombre}. Mi teléfono es ${telefono}. Presupuesto: ${presupuesto || "por definir"}. ${mensaje}`);
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${texto}`, "_blank", "noopener");
+  form.reset();
 
-Propiedad de interés: ${propertyId !== 'N/A' ? propiedades.find(p => p.id == propertyId)?.titulo || 'General' : 'Consulta General'}`);
-    
-    // Limpiar formulario
-    form.reset();
-    
-    // En producción, aquí enviarías los datos a un servidor
-    console.log({
-        nombre: name,
-        email: email,
-        telefono: phone,
-        propiedad: propertyId,
-        mensaje: message,
-        fecha: new Date().toLocaleString()
-    });
+  const alertBox = document.getElementById("formAlert");
+  if (alertBox) alertBox.textContent = "Se abrió WhatsApp con tu mensaje listo para enviar.";
 }
 
-// Suscribirse al newsletter
-function suscribirse(event) {
-    event.preventDefault();
-    
-    const email = event.target.querySelector('input[type="email"]').value;
-    
-    if (!email) {
-        alert('Por favor ingresa tu email');
-        return;
-    }
-    
-    alert(`¡Gracias por suscribirte! Recibirás las mejores ofertas en ${email}`);
-    event.target.reset();
-    
-    // En producción, aquí guardarías el email en una base de datos
-    console.log('Newsletter subscription:', { email, fecha: new Date().toLocaleString() });
-}
-
-// Inicializar cuando el documento carga
-document.addEventListener('DOMContentLoaded', () => {
-    // Si estamos en la página de propiedades, cargar todas
-    if (window.location.pathname.includes('propiedades.html') || window.location.href.includes('propiedades.html')) {
-        mostrarTodasLasPropiedades();
-    }
-    
-    // Si estamos en index.html, mostrar featured
-    if (document.getElementById('featuredProperties')) {
-        mostrarTodasLasPropiedades();
-    }
-    
-    // Actualizar UI de favoritos
-    actualizarBotonesFavoritos();
+document.addEventListener("DOMContentLoaded", () => {
+  renderDestacadas();
+  renderPropiedades();
+  calcularPago();
 });
