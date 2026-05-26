@@ -1,129 +1,71 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propiedades - UrbanOva Realty</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Catálogo de propiedades Urbanova Realty Solutions: casas y departamentos para visitar con asesoría inmobiliaria y de crédito." />
+  <meta name="theme-color" content="#0b1f36" />
+  <title>Propiedades | Urbanova Realty Solutions</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="stylesheet" href="style.css?v=20260520-urbanova3" />
+  <link rel="stylesheet" href="enhancements.css?v=20260520-urbanova3" />
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <h1>🏢 UrbanOva Realty</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="propiedades.html" class="active">Propiedades</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </div>
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Navegación principal">
+      <a class="brand" href="index.html"><span class="brand-mark">UR</span><span>Urbanova</span></a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a class="active" href="propiedades.html">Propiedades</a></li>
+        <li><a href="index.html#simulador">Simulador</a></li>
+        <li><a href="index.html#credito">Crédito</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <!-- Página de Propiedades -->
-    <section class="properties-page">
-        <div class="container">
-            <h1>Catálogo de Propiedades</h1>
-
-            <!-- Sección de Filtros -->
-            <div class="filters-section">
-                <h3>Filtros de Búsqueda</h3>
-                <div class="filters-grid">
-                    <div class="filter-group">
-                        <label for="filterLocation">Ubicación</label>
-                        <input type="text" id="filterLocation" placeholder="Ej: Centro, Norte...">
-                    </div>
-                    <div class="filter-group">
-                        <label for="filterType">Tipo de Propiedad</label>
-                        <select id="filterType">
-                            <option value="">-- Todos --</option>
-                            <option value="apartamento">Apartamento</option>
-                            <option value="casa">Casa</option>
-                            <option value="oficina">Oficina</option>
-                            <option value="local">Local Comercial</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label for="filterMinPrice">Precio Mínimo</label>
-                        <input type="number" id="filterMinPrice" placeholder="Ej: 100000">
-                    </div>
-                    <div class="filter-group">
-                        <label for="filterMaxPrice">Precio Máximo</label>
-                        <input type="number" id="filterMaxPrice" placeholder="Ej: 1000000">
-                    </div>
-                    <div class="filter-group">
-                        <label for="filterBedrooms">Habitaciones</label>
-                        <select id="filterBedrooms">
-                            <option value="">-- Cualquiera --</option>
-                            <option value="1">1 Habitación</option>
-                            <option value="2">2 Habitaciones</option>
-                            <option value="3">3 Habitaciones</option>
-                            <option value="4">4+ Habitaciones</option>
-                        </select>
-                    </div>
-                    <div style="display: flex; align-items: flex-end;">
-                        <button class="btn btn-primary" onclick="aplicarFiltros()" style="width: 100%;">
-                            Aplicar Filtros
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Información de Resultados -->
-            <div id="resultsInfo" class="results-info" style="display: none;">
-                Mostrando <strong id="resultCount">0</strong> propiedades
-            </div>
-
-            <!-- Grid de Propiedades -->
-            <div class="properties-grid" id="propertiesContainer">
-                <!-- Las propiedades se cargarán dinámicamente aquí -->
-            </div>
-
-            <!-- Mensaje sin resultados -->
-            <div id="noResults" style="display: none; text-align: center; padding: 40px;">
-                <h3 style="color: #003d5c;">No se encontraron propiedades con esos criterios</h3>
-                <p style="color: #888;">Intenta ajustar los filtros</p>
-                <button class="btn btn-primary" onclick="limpiarFiltros()">Limpiar Filtros</button>
-            </div>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Catálogo privado con asesoría</p>
+        <h1>Propiedades destacadas para comparar y visitar.</h1>
+        <p class="hero-text">Mostramos algunas opciones clave. El catálogo completo se comparte por WhatsApp según tu zona, presupuesto y forma de compra.</p>
+        <div class="filters-panel">
+          <div class="filters-grid">
+            <label>Zona<input id="filterLocation" type="text" placeholder="Ej. Satélite, Alamedas"></label>
+            <label>Tipo<select id="filterType"><option value="">Todas</option><option value="casa">Casas</option><option value="departamento">Departamentos</option><option value="Premium">Premium</option></select></label>
+            <label>Presupuesto máximo<input id="filterBudget" type="number" placeholder="Ej. 4500000"></label>
+            <button class="btn btn-primary" type="button" onclick="aplicarFiltros()">Filtrar</button>
+          </div>
+          <p class="alert">Mostrando <strong id="resultCount">0</strong> propiedades.</p>
         </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>UrbanOva Realty</h4>
-                    <p>Tu aliado en el mercado inmobiliario urbano</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Enlaces Rápidos</h4>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="propiedades.html">Propiedades</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <p>Email: info@urbanovarealty.com</p>
-                    <p>Teléfono: +1 (555) 123-4567</p>
-                    <p>Dirección: Calle Principal 123, Ciudad</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 UrbanOva Realty. Todos los derechos reservados.</p>
-            </div>
+    <section class="section">
+      <div class="container">
+        <div class="properties-grid" id="propertiesContainer"></div>
+        <div id="noResults" style="display:none;text-align:center;padding:38px;">
+          <h3>No encontramos propiedades con esos filtros.</h3>
+          <p>Prueba con otro presupuesto o solicita opciones privadas.</p>
+          <button class="btn btn-primary" type="button" onclick="limpiarFiltros()">Limpiar filtros</button>
         </div>
-    </footer>
+      </div>
+    </section>
+  </main>
 
-    <script src="script.js"></script>
-    <script>
-        // Cargar todas las propiedades al abrir la página
-        document.addEventListener('DOMContentLoaded', () => {
-            mostrarTodasLasPropiedades();
-        });
-    </script>
+  <a class="whatsapp-float" href="https://wa.me/525646514956?text=Hola%20Urbanova%2C%20quiero%20ver%20el%20cat%C3%A1logo%20de%20propiedades" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">WhatsApp</a>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><h3>Urbanova Realty Solutions</h3><p>Propiedades reales, visitas coordinadas y crédito con claridad.</p></div>
+      <div><h4>Contacto</h4><p><a href="https://wa.me/525646514956" target="_blank" rel="noopener">WhatsApp: 56 4651 4956</a></p></div>
+    </div>
+    <p class="footer-bottom">© 2026 Urbanova Realty Solutions.</p>
+  </footer>
+
+  <script src="script.js?v=20260520-urbanova3"></script>
 </body>
 </html>

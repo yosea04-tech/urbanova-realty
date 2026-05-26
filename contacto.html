@@ -1,184 +1,70 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto - UrbanOva Realty</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contacta a Urbanova Realty Solutions para asesoría inmobiliaria, simulación de crédito y visitas a propiedades." />
+  <meta name="theme-color" content="#0b1f36" />
+  <title>Contacto | Urbanova Realty Solutions</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="stylesheet" href="style.css?v=20260520-urbanova3" />
+  <link rel="stylesheet" href="enhancements.css?v=20260520-urbanova3" />
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <h1>🏢 UrbanOva Realty</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="propiedades.html">Propiedades</a></li>
-                <li><a href="contacto.html" class="active">Contacto</a></li>
-            </ul>
-        </div>
+  <header class="site-header">
+    <nav class="navbar container" aria-label="Navegación principal">
+      <a class="brand" href="index.html"><span class="brand-mark">UR</span><span>Urbanova</span></a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" onclick="toggleMenu()">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="propiedades.html">Propiedades</a></li>
+        <li><a href="index.html#simulador">Simulador</a></li>
+        <li><a href="index.html#credito">Crédito</a></li>
+        <li><a class="active" href="contacto.html">Contacto</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <!-- Sección de Contacto -->
-    <section class="contact-section">
-        <div class="container">
-            <h1>Ponte en Contacto con Nosotros</h1>
-            <p class="section-subtitle">Envía tu consulta y nuestro equipo te responderá en breve</p>
-
-            <div class="contact-content">
-                <!-- Formulario -->
-                <div class="contact-form-container">
-                    <h2>Formulario de Contacto</h2>
-                    <form id="contactForm" onsubmit="enviarFormularioContacto(event)">
-                        <div class="form-group">
-                            <label for="contactName">Nombre Completo *</label>
-                            <input type="text" id="contactName" name="name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="contactEmail">Email *</label>
-                            <input type="email" id="contactEmail" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="contactPhone">Teléfono *</label>
-                            <input type="tel" id="contactPhone" name="phone" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="contactProperty">Propiedad de Interés</label>
-                            <select id="contactProperty" name="property">
-                                <option value="">-- Seleccionar propiedad --</option>
-                                <option value="1">Apartamento Moderno en Centro</option>
-                                <option value="2">Casa Familiar en Zona Residencial</option>
-                                <option value="3">Oficina Premium Empresarial</option>
-                                <option value="4">Local Comercial en Avenida Principal</option>
-                                <option value="5">Penthouse Lujoso con Terraza</option>
-                                <option value="6">Casa de Campo con Piscina</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="contactMessage">Mensaje *</label>
-                            <textarea id="contactMessage" name="message" required></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensaje</button>
-                    </form>
-                </div>
-
-                <!-- Información de Contacto -->
-                <div class="contact-info-container">
-                    <h2>Información de Contacto</h2>
-
-                    <div class="info-card">
-                        <h3>📞 Teléfono</h3>
-                        <p>+1 (555) 123-4567</p>
-                        <p style="font-size: 0.9em; color: #888;">Lunes a Viernes: 9AM - 6PM</p>
-                    </div>
-
-                    <div class="info-card">
-                        <h3>📧 Email</h3>
-                        <p>info@urbanovarealty.com</p>
-                        <p style="font-size: 0.9em; color: #888;">Respuesta en 24 horas</p>
-                    </div>
-
-                    <div class="info-card">
-                        <h3>📍 Ubicación</h3>
-                        <p>Calle Principal 123</p>
-                        <p>Centro Empresarial, Piso 5</p>
-                        <p style="font-size: 0.9em; color: #888;">Ciudad Principal</p>
-                    </div>
-
-                    <div class="info-card">
-                        <h3>🕐 Horario</h3>
-                        <p>Lunes - Viernes: 9:00 AM - 6:00 PM</p>
-                        <p>Sábado: 10:00 AM - 2:00 PM</p>
-                        <p style="font-size: 0.9em; color: #888;">Domingo: Cerrado</p>
-                    </div>
-
-                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Nuestro Equipo</h3>
-                    <div class="agents-list">
-                        <div class="agent-card">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">👨</div>
-                            <h4>Carlos Mendez</h4>
-                            <p>Agente Principal</p>
-                            <p style="color: #0ea5e9;">📞 +1-5551234567</p>
-                        </div>
-                        <div class="agent-card">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">👩</div>
-                            <h4>Ana García</h4>
-                            <p>Especialista Residencial</p>
-                            <p style="color: #0ea5e9;">📞 +1-5552345678</p>
-                        </div>
-                        <div class="agent-card">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">👨</div>
-                            <h4>Luis Rivera</h4>
-                            <p>Especialista Comercial</p>
-                            <p style="color: #0ea5e9;">📞 +1-5553456789</p>
-                        </div>
-                        <div class="agent-card">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">👩</div>
-                            <h4>María López</h4>
-                            <p>Asesora de Inversión</p>
-                            <p style="color: #0ea5e9;">📞 +1-5554567890</p>
-                        </div>
-                    </div>
-                </div>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Atención personalizada</p>
+        <h1>Cuéntanos qué buscas y te ayudamos a ordenar tus opciones.</h1>
+        <p class="hero-text">Puedes pedir catálogo privado, agendar visita o revisar una ruta de crédito para comprar casa o departamento.</p>
+        <div class="contact-grid">
+          <form class="contact-panel" onsubmit="enviarFormularioContacto(event)">
+            <label>Nombre completo *<input name="nombre" type="text" autocomplete="name" required></label>
+            <label>Teléfono / WhatsApp *<input name="telefono" type="tel" autocomplete="tel" required></label>
+            <label>Presupuesto aproximado<input name="presupuesto" type="text" placeholder="Ej. $3.5 M, Infonavit, contado..."></label>
+            <label>¿Qué estás buscando? *<textarea name="mensaje" placeholder="Zona, tipo de propiedad, forma de pago o dudas..." required></textarea></label>
+            <button class="btn btn-primary full" type="submit">Enviar por WhatsApp</button>
+            <p id="formAlert" class="alert" aria-live="polite"></p>
+          </form>
+          <aside class="contact-panel">
+            <h2>Datos de contacto</h2>
+            <div class="info-list">
+              <div class="info-item"><strong>WhatsApp</strong><p><a href="https://wa.me/525646514956" target="_blank" rel="noopener">56 4651 4956</a></p></div>
+              <div class="info-item"><strong>Email</strong><p><a href="mailto:info@urbanovarealty.io">info@urbanovarealty.io</a></p></div>
+              <div class="info-item"><strong>Servicios</strong><p>Venta de propiedades, asesoría inmobiliaria, gestión de crédito, trámites y visitas.</p></div>
+              <div class="info-item"><strong>Respuesta inicial</strong><p>Te contactamos para perfilar zona, presupuesto y ruta de compra.</p></div>
             </div>
+          </aside>
         </div>
+      </div>
     </section>
+  </main>
 
-    <!-- Mapa -->
-    <section class="map-section">
-        <div class="container">
-            <h2>Ubicación Nuestra Oficina</h2>
-            <div class="map-container">
-                <iframe 
-                    width="100%" 
-                    height="400" 
-                    frameborder="0" 
-                    style="border:0" 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3760.5886399999995!2d-74.00735!3d40.71278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0x2f54c3c4c3c4c3c4!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1234567890" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-        </div>
-    </section>
+  <a class="whatsapp-float" href="https://wa.me/525646514956?text=Hola%20Urbanova%2C%20quiero%20asesor%C3%ADa%20inmobiliaria" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">WhatsApp</a>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>UrbanOva Realty</h4>
-                    <p>Tu aliado en el mercado inmobiliario urbano</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Enlaces Rápidos</h4>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="propiedades.html">Propiedades</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <p>Email: info@urbanovarealty.com</p>
-                    <p>Teléfono: +1 (555) 123-4567</p>
-                    <p>Dirección: Calle Principal 123, Ciudad</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 UrbanOva Realty. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><h3>Urbanova Realty Solutions</h3><p>Compra con información clara y acompañamiento humano.</p></div>
+      <div><h4>Ruta rápida</h4><p><a href="propiedades.html">Ver propiedades</a></p><p><a href="index.html#simulador">Simular compra</a></p></div>
+    </div>
+    <p class="footer-bottom">© 2026 Urbanova Realty Solutions.</p>
+  </footer>
 
-    <script src="script.js"></script>
+  <script src="script.js?v=20260520-urbanova3"></script>
 </body>
 </html>
