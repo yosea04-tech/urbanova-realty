@@ -1,71 +1,165 @@
 <!DOCTYPE html>
 <html lang="es-MX">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Catálogo de propiedades Urbanova Realty Solutions: casas y departamentos para visitar con asesoría inmobiliaria y de crédito." />
-  <meta name="theme-color" content="#0b1f36" />
-  <title>Propiedades | Urbanova Realty Solutions</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="manifest" href="site.webmanifest" />
-  <link rel="stylesheet" href="style.css?v=20260520-urbanova3" />
-  <link rel="stylesheet" href="enhancements.css?v=20260520-urbanova3" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propiedades en venta | Urbanova Realty Solutions</title>
+  <meta name="description" content="Explora propiedades destacadas y solicita acceso al catálogo privado con opciones según tu presupuesto y crédito.">
+  <link rel="icon" href="/assets/favicon/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="manifest" href="/assets/favicon/site.webmanifest">
+<meta name="theme-color" content="#071E2C">
+  <meta property="og:title" content="Propiedades premium | Urbanova Realty Solutions">
+  <meta property="og:description" content="Explora propiedades destacadas y solicita acceso al catálogo privado con opciones según tu presupuesto y crédito.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://urbanovarealty.io/propiedades">
+  <meta property="og:image" content="https://urbanovarealty.io/img/urbanova-logo.png">
+  <link rel="stylesheet" href="css/estilos.css?v=3.3.0">
 </head>
 <body>
-  <header class="site-header">
-    <nav class="navbar container" aria-label="Navegación principal">
-      <a class="brand" href="index.html"><span class="brand-mark">UR</span><span>Urbanova</span></a>
-      <button class="menu-toggle" type="button" aria-label="Abrir menú" onclick="toggleMenu()">☰</button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a class="active" href="propiedades.html">Propiedades</a></li>
-        <li><a href="index.html#simulador">Simulador</a></li>
-        <li><a href="index.html#credito">Crédito</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
-
+    <!-- Premium marquee banner -->
+    <div class="marquee-banner">
+      <div class="marquee-content">
+        <span>Créditos INFONAVIT · FOVISSSTE · Bancario · Contado · Financiamiento personalizado · <a href="contacto" data-whatsapp data-message="Hola, quiero agendar una visita con Urbanova Realty Solutions." style="color:#C89B3C;text-decoration:underline;">Agenda tu visita</a> · Asesoría sin costo · Catálogo privado disponible</span>
+      </div>
+    </div>
+  <div class="site-header-wrap">
+    <div class="topbar"><div class="container"><span>Asesoría inmobiliaria premium con enfoque financiero integral.</span><a href="contacto" data-whatsapp data-message="Hola, quiero agendar una visita con Urbanova Realty Solutions.">Agenda tu visita</a></div></div>
+    <header class="site-header container">
+      <a class="brand" href="/"><span class="brand-name">Urbanova</span><span class="brand-sub">Realty Solutions</span></a>
+      <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="site-nav" aria-label="Navegación principal">
+        <a href="/">Inicio</a><a href="propiedades" class="active">Propiedades</a><a href="creditos">Créditos</a><a href="financiamiento">Financiamiento</a><a href="nosotros">Nosotros</a><a href="contacto">Contacto</a><a class="nav-cta" href="contacto" data-whatsapp data-message="Hola, quiero agendar una visita a una propiedad Urbanova.">Agenda tu visita</a>
+      </nav>
+    </header>
+  </div>
   <main>
-    <section class="page-hero">
-      <div class="container">
-        <p class="eyebrow">Catálogo privado con asesoría</p>
-        <h1>Propiedades destacadas para comparar y visitar.</h1>
-        <p class="hero-text">Mostramos algunas opciones clave. El catálogo completo se comparte por WhatsApp según tu zona, presupuesto y forma de compra.</p>
-        <div class="filters-panel">
-          <div class="filters-grid">
-            <label>Zona<input id="filterLocation" type="text" placeholder="Ej. Satélite, Alamedas"></label>
-            <label>Tipo<select id="filterType"><option value="">Todas</option><option value="casa">Casas</option><option value="departamento">Departamentos</option><option value="Premium">Premium</option></select></label>
-            <label>Presupuesto máximo<input id="filterBudget" type="number" placeholder="Ej. 4500000"></label>
-            <button class="btn btn-primary" type="button" onclick="aplicarFiltros()">Filtrar</button>
+    <section class="hero">
+      <div class="container hero-split">
+        <div class="hero-content">
+          <p class="eyebrow">Catálogo premium</p>
+          <h1 class="hero-title">Propiedades seleccionadas para tu perfil financiero</h1>
+          <p class="hero-copy">Mostramos una curaduría breve para mantener privacidad y disponibilidad. El Catálogo completo se comparte según tu perfil de compra para asegurar opciones vigentes y realmente compatibles.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="contacto" data-whatsapp data-message="Hola, quiero el catálogo premium completo de Urbanova. Mi presupuesto aproximado es:">Solicitar catálogo</a>
+            <a class="btn btn-secondary" href="#destacadas">Ver destacadas</a>
           </div>
-          <p class="alert">Mostrando <strong id="resultCount">0</strong> propiedades.</p>
+        </div>
+        <div class="hero-visual">
+          <div class="highlight-box">
+            <p class="eyebrow">Filtro Urbanova</p>
+            <ul class="ribbon-list" style="margin-top:16px;">
+              <li>Compatibilidad con tu tipo de Crédito o contado</li>
+              <li>Presupuesto total, no solo precio publicado</li>
+              <li>Zona, conectividad y plusvalÃ­a</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
-
-    <section class="section">
+    <section class="section" id="destacadas">
       <div class="container">
-        <div class="properties-grid" id="propertiesContainer"></div>
-        <div id="noResults" style="display:none;text-align:center;padding:38px;">
-          <h3>No encontramos propiedades con esos filtros.</h3>
-          <p>Prueba con otro presupuesto o solicita opciones privadas.</p>
-          <button class="btn btn-primary" type="button" onclick="limpiarFiltros()">Limpiar filtros</button>
+        <p class="eyebrow">Filtros</p>
+        <h2 class="section-title">Explora por forma de compra</h2>
+        <div class="filter-row">
+          <button class="filter-btn active" data-filter="all">Todas</button>
+          <button class="filter-btn" data-filter="infonavit">INFONAVIT</button>
+          <button class="filter-btn" data-filter="fovissste">FOVISSSTE</button>
+          <button class="filter-btn" data-filter="bancario">Bancario</button>
+          <button class="filter-btn" data-filter="financiamiento">Financiamiento</button>
+          <button class="filter-btn" data-filter="contado">Contado</button>
+        </div>
+        <div class="property-grid mt-24">
+          <article class="property-card featured property-item" data-Credit="bancario contado">
+            <div class="property-card-media"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=Crop&w=1200&q=80" alt="Casa residencial premium" loading="lazy"><span class="property-card-tag">Premium</span></div>
+            <div class="property-card-body">
+              <p class="property-card-loCation">Zona Residencial Norte</p>
+              <h3>Casa amplia con acabados de lujo</h3>
+              <p class="property-card-price">$4,650,000</p>
+              <div class="property-card-specs"><span>3 recamaras</span><span>3 baÃ±os</span><span>Bancario / Contado</span></div>
+              <p>Para compradores que priorizan ubicaciÃ³n, metraje y cierre ordenado.</p>
+              <div class="property-card-actions"><a class="btn btn-primary" href="contacto" data-whatsapp data-message="Hola, quiero la ficha completa de la casa residencial premium.">Solicitar ficha</a></div>
+            </div>
+          </article>
+          <article class="property-card property-item" data-Credit="infonavit bancario">
+            <div class="property-card-media"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=Crop&w=1200&q=80" alt="Casa primer patrimonio" loading="lazy"></div>
+            <div class="property-card-body">
+              <p class="property-card-loCation">Primer Patrimonio</p>
+              <h3>Casa funcional con servicios integrados</h3>
+              <p class="property-card-price">$1,280,000</p>
+              <div class="property-card-specs"><span>3 recamaras</span><span>1 baÃ±o</span><span>Crédito compatible</span></div>
+              <div class="property-card-actions"><a class="btn btn-secondary" href="contacto" data-whatsapp data-message="Hola, quiero informaciÃ³n de casas compatibles con INFONAVIT o Crédito bancario.">Solicitar info</a></div>
+            </div>
+          </article>
+          <article class="property-card property-item" data-Credit="financiamiento contado">
+            <div class="property-card-media"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=Crop&w=1200&q=80" alt="departamento urbano" loading="lazy"><span class="property-card-tag">Oportunidad</span></div>
+            <div class="property-card-body">
+              <p class="property-card-loCation">Urbano Conectado</p>
+              <h3>departamento con excelente conectividad</h3>
+              <p class="property-card-price">$1,950,000</p>
+              <div class="property-card-specs"><span>2 recamaras</span><span>2 baÃ±os</span><span>Financiamiento</span></div>
+              <div class="property-card-actions"><a class="btn btn-secondary" href="contacto" data-whatsapp data-message="Hola, quiero informaciÃ³n de departamentos con financiamiento Urbanova.">Solicitar info</a></div>
+            </div>
+          </article>
+          <article class="property-card property-item" data-Credit="infonavit fovissste">
+            <div class="property-card-media"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=Crop&w=1200&q=80" alt="Casa Crédito INFONAVIT" loading="lazy"></div>
+            <div class="property-card-body">
+              <p class="property-card-loCation">Zona Centro</p>
+              <h3>Casa cerca de servicios y escuelas</h3>
+              <p class="property-card-price">$1,850,000</p>
+              <div class="property-card-specs"><span>2 recamaras</span><span>2 baÃ±os</span><span>INFONAVIT / FOVISSSTE</span></div>
+              <div class="property-card-actions"><a class="btn btn-secondary" href="contacto" data-whatsapp data-message="Hola, quiero informaciÃ³n de casas compatibles con INFONAVIT o FOVISSSTE.">Solicitar info</a></div>
+            </div>
+          </article>
+          <article class="property-card property-item" data-Credit="bancario financiamiento">
+            <div class="property-card-media"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=Crop&w=1200&q=80" alt="Casa moderna premium" loading="lazy"><span class="property-card-tag">Premium</span></div>
+            <div class="property-card-body">
+              <p class="property-card-loCation">Residencial Campestre</p>
+              <h3>Casa moderna con areas verdes</h3>
+              <p class="property-card-price">$3,420,000</p>
+              <div class="property-card-specs"><span>4 recamaras</span><span>3 baÃ±os</span><span>Bancario / Financiamiento</span></div>
+              <div class="property-card-actions"><a class="btn btn-secondary" href="contacto" data-whatsapp data-message="Hola, quiero informaciÃ³n de la casa moderna premium publicada.">Solicitar info</a></div>
+            </div>
+          </article>
+          <article class="property-card property-item" data-Credit="contado bancario">
+            <div class="property-card-media"><img src="https://images.unsplash.com/photo-1600584522681-6c02feed091b?auto=format&fit=Crop&w=1200&q=80" alt="departamento de lujo" loading="lazy"><span class="property-card-tag">Lujo</span></div>
+            <div class="property-card-body">
+              <p class="property-card-loCation">Torre Ejecutiva</p>
+              <h3>departamento penthouse con vista panoramica</h3>
+              <p class="property-card-price">$6,800,000</p>
+              <div class="property-card-specs"><span>3 recamaras</span><span>3 baÃ±os</span><span>Contado / Bancario</span></div>
+              <div class="property-card-actions"><a class="btn btn-secondary" href="contacto" data-whatsapp data-message="Hola, quiero informaciÃ³n del penthouse premium Urbanova.">Solicitar info</a></div>
+            </div>
+          </article>
+        </div>
+        <div class="quote-box mt-24 reveal">
+          <p class="eyebrow mx-auto" style="justify-content:center;">Catálogo completo</p>
+          <h2 class="section-title text-center">El Catálogo premium se comparte por WhatsApp</h2>
+          <p class="section-copy mx-auto text-center">Evitamos publicar todo el inventario publicaMente para asegurar disponibilidad real. Envianos tu presupuesto y zona, y recibiras opciÃ³nes vigentes y compatibles con tu perfil.</p>
+          <div class="hero-actions" style="justify-content:center; margin-top:28px;">
+            <a class="btn btn-gold" href="contacto" data-whatsapp data-message="Hola, quiero el Catálogo premium completo de Urbanova. Mi presupuesto aproximado es:">Enviar mi presupuesto</a>
+            <a class="btn btn-outline-light" href="contacto">Llenar formulario</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
-
-  <a class="whatsapp-float" href="https://wa.me/525646514956?text=Hola%20Urbanova%2C%20quiero%20ver%20el%20cat%C3%A1logo%20de%20propiedades" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">WhatsApp</a>
-
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div><h3>Urbanova Realty Solutions</h3><p>Propiedades reales, visitas coordinadas y crédito con claridad.</p></div>
-      <div><h4>Contacto</h4><p><a href="https://wa.me/525646514956" target="_blank" rel="noopener">WhatsApp: 56 4651 4956</a></p></div>
+  <footer class="site-footer">
+    <div class="container footer-shell">
+      <section class="footer-cta"><div><h3>Quieres una curaduria realmente compatible?</h3><p>Comparte presupuesto, zona y forma de pago para recibir opciÃ³nes premium.</p></div><div class="footer-cta-actions"><a class="btn btn-gold" href="contacto" data-whatsapp data-message="Hola, quiero que Urbanova filtre propiedades premium para mi perfil.">Filtrar mi perfil</a></div></section>
+      <div class="footer-links">
+        <div class="footer-brand"><strong>Urbanova Realty Solutions</strong><p>Catálogo inmobiliario premium con Criterio financiero.</p></div>
+        <div class="footer-col"><h4>Navegación</h4><nav><a href="/">Inicio</a><a href="propiedades">Propiedades</a><a href="creditos">Créditos</a><a href="financiamiento">Financiamiento</a><a href="nosotros">Nosotros</a><a href="contacto">Contacto</a></nav></div>
+        <div class="footer-col"><h4>Legal</h4><nav><a href="aviso-de-privacidad">Aviso de privacidad</a><a href="terminos-y-condiciones">Términos</a></nav></div>
+      </div>
+      <p class="footer-legal-disclaimer">Urbanova Realty Solutions es una asesorÃ­a inmobiliaria independiente. Los Créditos, financiamientos y aprobaciones estan sujetos a evaluaciÃ³n de cada instituciÃ³n. La informaciÃ³n proporcionada en este sitio es de caracter orientativo y no constituye asesorÃ­a legal, fiscal ni financiera vinculante.</p>
+      <div class="footer-bottom"><p>&copy; <span id="footer-year"></span> Urbanova Realty Solutions.</p><p><a href="https://urbanovarealty.io" target="_blank" rel="noopener noreferrer">urbanovarealty.io</a></p></div>
     </div>
-    <p class="footer-bottom">© 2026 Urbanova Realty Solutions.</p>
   </footer>
-
-  <script src="script.js?v=20260520-urbanova3"></script>
+  <a class="floating-whatsapp" href="#" data-whatsapp data-message="Hola, quiero el Catálogo premium de propiedades Urbanova.">WhatsApp</a>
+  <script src="js/script.js?v=3.3.0" defer></script>
 </body>
 </html>
+

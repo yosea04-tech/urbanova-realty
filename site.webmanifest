@@ -1,16 +1,12 @@
 {
   "name": "Urbanova Realty Solutions",
   "short_name": "Urbanova",
-  "description": "Asesoría inmobiliaria, propiedades verificadas y soluciones de crédito.",
+  "description": "Asesoria inmobiliaria premium y financiamiento",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fbfaf7",
-  "theme_color": "#0b1f36",
+  "background_color": "#0b1e2e",
+  "theme_color": "#0b1e2e",
   "icons": [
-    {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
-    }
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
   ]
 }

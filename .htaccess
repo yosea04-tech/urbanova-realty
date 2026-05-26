@@ -1,19 +1,39 @@
-# Urbanova Realty Solutions - cache and routing
+RewriteEngine On
+
 DirectoryIndex index.html
+Options -Indexes
 
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^$ index.html [L]
-</IfModule>
+# Redirect /index.html to /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ / [R=301,L]
 
-<IfModule mod_headers.c>
-  <FilesMatch "\.(html)$">
-    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
-    Header set Pragma "no-cache"
-  </FilesMatch>
-  <FilesMatch "\.(css|js|svg|xml|txt|webmanifest)$">
-    Header set Cache-Control "public, max-age=300, must-revalidate"
-  </FilesMatch>
-</IfModule>
+# Redirect /index to /
+RewriteRule ^index$ / [R=301,L]
+# Credit sub-routes: /creditos/tipo -> /credito-tipo.html
+RewriteRule ^creditos/infonavit$ /credito-infonavit.html [L]
+RewriteRule ^creditos/fovissste$ /credito-fovissste.html [L]
+RewriteRule ^creditos/bancario$ /credito-bancario.html [L]
+RewriteRule ^creditos/financiamiento$ /credito-financiamiento.html [L]
+RewriteRule ^creditos/cfe$ /credito-cfe.html [L]
+RewriteRule ^creditos/banjercito$ /credito-banjercito.html [L]
+RewriteRule ^creditos/contado$ /compra-contado.html [L]
+
+# Redirect .html URLs to clean URLs (for SEO and external links)
+RewriteCond %{THE_REQUEST} \.html\ HTTP
+RewriteRule ^(.+)\.html$ /$1 [R=301,L]
+
+# Remove .html extension from URLs (internal rewrite) - keep at end
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# 404 error page
+ErrorDocument 404 /404.html
+
+# Cache static assets
+<FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|webp)$">
+  Header set Cache-Control "max-age=2592000, public"
+</FilesMatch>
+
+# Enable compression
+AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript image/svg+xml

@@ -1,0 +1,16 @@
+{
+  "name": "Urbanova Realty Solutions",
+  "short_name": "Urbanova",
+  "description": "Asesoría inmobiliaria premium y financiamiento personalizado",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F4",
+  "theme_color": "#071E2C",
+  "orientation": "portrait-primary",
+  "categories": ["real estate", "finance"],
+  "icons": [
+    { "src": "/assets/favicon/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/favicon/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

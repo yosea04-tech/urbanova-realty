@@ -1,0 +1,13 @@
+{
+    "cSpell.enabled": false,
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./proyecto-final",
+        "-p",
+        "*test.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
+}
