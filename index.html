@@ -5,12 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Urbanova Realty Solutions | Propiedades, créditos y asesoría inmobiliaria premium</title>
   <meta name="description" content="Encuentra propiedades seleccionadas y recibe acompañamiento en crédito INFONAVIT, FOVISSSTE, bancario y financiamiento personalizado.">
+  <meta name="theme-color" content="#071E2C">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="es-MX">
   <link rel="icon" href="/assets/favicon/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
-<link rel="manifest" href="/assets/favicon/site.webmanifest">
-<meta name="theme-color" content="#071E2C">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="css/estilos.css?v=4.0">
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=Crop&w=1200&q=80" fetchpriority="high">
+  <link rel="stylesheet" href="css/estilos.css?v=4.0" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/estilos.css?v=4.0"></noscript>
   <meta property="og:title" content="Urbanova Realty Solutions — Inmobiliaria premium">
   <meta property="og:description" content="Encuentra propiedades seleccionadas y recibe acompañamiento en crédito INFONAVIT, FOVISSSTE, bancario y financiamiento personalizado.">
   <meta property="og:type" content="website">
@@ -18,7 +26,46 @@
   <meta property="og:image" content="https://urbanovarealty.io/img/urbanova-logo.png">
   <meta property="og:locale" content="es_MX">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="css/estilos.css?v=3.3.0">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Urbanova Realty Solutions",
+    "url": "https://urbanovarealty.io",
+    "logo": "https://urbanovarealty.io/img/urbanova-logo.png",
+    "image": "https://urbanovarealty.io/img/urbanova-logo.png",
+    "description": "Asesoría inmobiliaria premium con enfoque financiero integral. Compra, crédito INFONAVIT, FOVISSSTE, bancario y financiamiento personalizado.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Ciudad de México", "addressCountry": "MX" },
+    "telephone": "+522219490999",
+    "areaServed": "México",
+    "priceRange": "$$$",
+    "sameAs": ["https://wa.me/522219490999"]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Urbanova Realty Solutions",
+    "url": "https://urbanovarealty.io",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://urbanovarealty.io/propiedades?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "¿Qué tipos de crédito puedo usar para comprar casa?", "acceptedAnswer": { "@type": "Answer", "text": "Trabajamos con INFONAVIT, FOVISSSTE, crédito bancario, Banjercito, CFE y financiamiento personalizado para independientes." } },
+      { "@type": "Question", "name": "¿Ofrecen asesoría sin costo?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, la sesión inicial es completamente gratuita y sin compromiso para analizar tu perfil y capacidad de compra." } },
+      { "@type": "Question", "name": "¿Cómo agendo una visita a una propiedad?", "acceptedAnswer": { "@type": "Answer", "text": "Puedes contactarnos por WhatsApp al +52 221 949 0999 o llenar el formulario en nuestra página de contacto para agendar." } }
+    ]
+  }
+  </script>
 </head>
   <body>
     <!-- Premium marquee banner -->
@@ -41,8 +88,12 @@
          <a href="contacto">Contacto</a>
          <a class="nav-cta" href="contacto" data-whatsapp data-message="Hola, quiero agendar una visita a una propiedad Urbanova.">Agenda tu visita</a>
        </nav>
-       <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-     </header>
+        <div class="header-actions">
+          <button class="theme-toggle" type="button" aria-label="Modo oscuro" title="Modo oscuro">&#9681;</button>
+          <button class="search-toggle" type="button" aria-label="Buscar" title="Buscar">&#128269;</button>
+        </div>
+        <button class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </header>
   </div>
 
   <main>
@@ -272,6 +323,17 @@
   </footer>
 
   <a class="floating-whatsapp" href="#" data-whatsapp data-message="Hola, quiero información de Urbanova Realty Solutions.">WhatsApp</a>
-  <script src="js/script.js?v=3.3.0" defer></script>
+
+  <nav class="mobile-bottom-nav" aria-label="Navegación móvil">
+    <ul>
+      <li><a href="/"><span>&#127968;</span>Inicio</a></li>
+      <li><a href="propiedades"><span>&#127968;</span>Casas</a></li>
+      <li><a href="creditos"><span>&#128176;</span>Créditos</a></li>
+      <li><a href="contacto"><span>&#128222;</span>Contacto</a></li>
+    </ul>
+  </nav>
+
+  <script src="js/script.js?v=4.0" defer></script>
+  <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(()=>{});});}</script>
 </body>
 </html>

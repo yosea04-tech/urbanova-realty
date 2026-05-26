@@ -260,6 +260,138 @@ function setupCreditAccordion() {
   });
 }
 
+/* ── Dark Mode ── */
+
+function setupThemeToggle() {
+  const btn = qs('.theme-toggle');
+  if (!btn) return;
+  const saved = localStorage.getItem('urbanova-theme');
+  if (saved === 'dark') document.documentElement.classList.add('dark');
+  btn.innerHTML = document.documentElement.classList.contains('dark') ? '&#9788;' : '&#9681;';
+  btn.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    const isDark = document.documentElement.classList.contains('dark');
+    btn.innerHTML = isDark ? '&#9788;' : '&#9681;';
+    localStorage.setItem('urbanova-theme', isDark ? 'dark' : 'light');
+  });
+}
+
+/* ── Search Overlay ── */
+
+const SEARCH_INDEX = [
+  { title: 'Inicio', url: '/' },
+  { title: 'Propiedades', url: '/propiedades' },
+  { title: 'Créditos', url: '/creditos' },
+  { title: 'Crédito INFONAVIT', url: '/creditos/infonavit' },
+  { title: 'Crédito FOVISSSTE', url: '/creditos/fovissste' },
+  { title: 'Crédito Bancario', url: '/creditos/bancario' },
+  { title: 'Crédito CFE', url: '/creditos/cfe' },
+  { title: 'Crédito Banjercito', url: '/creditos/banjercito' },
+  { title: 'Compra de Contado', url: '/creditos/contado' },
+  { title: 'Financiamiento personalizado', url: '/financiamiento' },
+  { title: 'Simulador de financiamiento', url: '/financiamiento#simulador' },
+  { title: 'Nosotros', url: '/nosotros' },
+  { title: 'Contacto', url: '/contacto' },
+  { title: 'Aviso de privacidad', url: '/aviso-de-privacidad' },
+  { title: 'Términos y condiciones', url: '/terminos-y-condiciones' },
+];
+
+function setupSearchOverlay() {
+  const toggle = qs('.search-toggle');
+  if (!toggle) return;
+  const overlay = document.createElement('div');
+  overlay.className = 'search-overlay';
+  overlay.innerHTML = `<button class="search-close" type="button" aria-label="Cerrar búsqueda">&times;</button><div class="search-panel"><input class="search-input" type="search" placeholder="Buscar páginas, créditos..." autocomplete="off" aria-label="Buscar"><div class="search-results"></div></div>`;
+  document.body.appendChild(overlay);
+  const input = qs('.search-input', overlay);
+  const results = qs('.search-results', overlay);
+  const close = qs('.search-close', overlay);
+
+  const open = () => { overlay.classList.add('open'); setTimeout(() => input?.focus(), 100); };
+  const closeSearch = () => { overlay.classList.remove('open'); input.value = ''; results.innerHTML = ''; };
+
+  toggle.addEventListener('click', open);
+  close.addEventListener('click', closeSearch);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeSearch(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); open(); } });
+
+  input.addEventListener('input', () => {
+    const q = input.value.toLowerCase().trim();
+    if (!q) { results.innerHTML = ''; return; }
+    const matches = SEARCH_INDEX.filter(item => item.title.toLowerCase().includes(q));
+    results.innerHTML = matches.length ? matches.map(m => `<a class="search-result-item" href="${m.url}"><strong>${m.title}</strong></a>`).join('') : '<div class="search-result-item" style="cursor:default;">Sin resultados</div>';
+  });
+}
+
+/* ── Image Gallery ── */
+
+function setupImageGallery() {
+  const cards = qsa('.property-card');
+  if (!cards.length) return;
+
+  const modal = document.createElement('div');
+  modal.className = 'gallery-modal';
+  modal.innerHTML = `<button class="gallery-close" type="button" aria-label="Cerrar">&times;</button><button class="gallery-prev" type="button" aria-label="Anterior">&#8249;</button><img src="" alt="Galería"><button class="gallery-next" type="button" aria-label="Siguiente">&#8250;</button>`;
+  document.body.appendChild(modal);
+
+  const img = qs('img', modal);
+  const close = qs('.gallery-close', modal);
+  const prev = qs('.gallery-prev', modal);
+  const next = qs('.gallery-next', modal);
+
+  let currentImages = [];
+  let currentIndex = 0;
+
+  const show = (idx) => {
+    currentIndex = idx;
+    img.src = currentImages[idx];
+  };
+
+  cards.forEach(card => {
+    const media = qs('.property-card-media', card);
+    if (!media) return;
+    const cardImg = qs('img', media);
+    media.addEventListener('click', () => {
+      const allImgs = qsa('img', card);
+      currentImages = allImgs.length ? allImgs.map(i => i.src) : [cardImg?.src || ''];
+      currentIndex = 0;
+      show(0);
+      modal.classList.add('open');
+    });
+  });
+
+  prev.addEventListener('click', () => { const idx = (currentIndex - 1 + currentImages.length) % currentImages.length; show(idx); });
+  next.addEventListener('click', () => { const idx = (currentIndex + 1) % currentImages.length; show(idx); });
+  close.addEventListener('click', () => modal.classList.remove('open'));
+  modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+  document.addEventListener('keydown', e => {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape') modal.classList.remove('open');
+    if (e.key === 'ArrowLeft') { prev.click(); }
+    if (e.key === 'ArrowRight') { next.click(); }
+  });
+}
+
+/* ── Toast ── */
+
+function showToast(msg, duration = 3000) {
+  let container = qs('.toast-container');
+  if (!container) { container = document.createElement('div'); container.className = 'toast-container'; document.body.appendChild(container); }
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+  container.appendChild(t);
+  setTimeout(() => { t.style.opacity = '0'; t.style.transition = 'opacity 0.3s'; setTimeout(() => t.remove(), 300); }, duration);
+}
+
+/* ── Mobile bottom nav active ── */
+
+function setupMobileNav() {
+  const path = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '';
+  qsa('.mobile-bottom-nav a').forEach(a => {
+    const href = a.getAttribute('href').replace(/\.html$/, '').replace(/\/$/, '') || '';
+    if (href === path || (path.startsWith(href) && href !== '')) a.classList.add('active');
+  });
+}
+
 /* ── Init ── */
 
 function init() {
@@ -272,6 +404,10 @@ function init() {
   setupFooterYear();
   setupScrollReveal();
   setupCounters();
+  setupThemeToggle();
+  setupSearchOverlay();
+  setupImageGallery();
+  setupMobileNav();
 }
 
 if (document.readyState === 'loading') {
