@@ -1,5 +1,5 @@
 const CACHE = 'urbanova-v1';
-const PRECACHE = ['/', '/propiedades', '/creditos', '/contacto', '/css/estilos.css?v=4.0', '/js/script.js?v=4.0'];
+const PRECACHE = ['/', '/propiedades', '/creditos', '/financiamiento', '/nosotros', '/contacto', '/css/estilos.css?v=4.0', '/js/script.js?v=4.0'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(PRECACHE)));
