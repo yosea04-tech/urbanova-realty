@@ -260,22 +260,6 @@ function setupCreditAccordion() {
   });
 }
 
-/* ── Dark Mode ── */
-
-function setupThemeToggle() {
-  const btn = qs('.theme-toggle');
-  if (!btn) return;
-  const saved = localStorage.getItem('urbanova-theme');
-  if (saved === 'dark') document.documentElement.classList.add('dark');
-  btn.innerHTML = document.documentElement.classList.contains('dark') ? '&#9788;' : '&#9681;';
-  btn.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark');
-    const isDark = document.documentElement.classList.contains('dark');
-    btn.innerHTML = isDark ? '&#9788;' : '&#9681;';
-    localStorage.setItem('urbanova-theme', isDark ? 'dark' : 'light');
-  });
-}
-
 /* ── Search Overlay ── */
 
 const SEARCH_INDEX = [
@@ -404,7 +388,6 @@ function init() {
   setupFooterYear();
   setupScrollReveal();
   setupCounters();
-  setupThemeToggle();
   setupSearchOverlay();
   setupImageGallery();
   setupMobileNav();
