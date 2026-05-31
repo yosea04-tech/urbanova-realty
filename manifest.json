@@ -5,7 +5,7 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FAF8F5",
-  "theme_color": "#0D5E5E",
+  "theme_color": "#047857",
   "orientation": "portrait-primary",
   "categories": ["real estate", "finance"],
   "icons": [
